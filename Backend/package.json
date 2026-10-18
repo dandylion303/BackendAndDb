@@ -8,7 +8,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",

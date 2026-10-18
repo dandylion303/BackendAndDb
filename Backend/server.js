@@ -1,5 +1,5 @@
 import express from 'express'
-const PORT = 4444
+const PORT = process.env.PORT || 4444
 import startServer from './config/db.js'
 import authorRouter from './modules/author/authorRoutes.js'
 import postRouter from './modules/posts/postRoutes.js'
