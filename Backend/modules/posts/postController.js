@@ -1,6 +1,6 @@
 import { findAllPosts, findSinglePost, createNewPost, updateExistingPost, deleteExistingPost } from "./postService.js";
 import { sendEmail } from "../mail/serviceMail.js";
-
+import Author from '../author/Author.js'
 
 export const getAllPosts = async (req, res, next) => {
     const { title } = req.query
@@ -36,13 +36,11 @@ export const getSinglePost = async (req, res, next) => {
 
 export const createPost = async (req, res, next) => {
     try {
+        const currentAuthor = await Author.findById(req.authorId)
+        const baseData = { ...req.body, author: currentAuthor.email }
         const postData = req.file
-            ? { ...req.body, cover: req.file.path }
-            : req.body
-
-        //PRIMA DELL'UPLOAD DELLA COVER
-        //const { category, title, cover, readTime, author, content } = req.body
-        //const newPost = await createNewPost(req.body)
+            ? { ...baseData, cover: req.file.path }
+            : baseData
 
         const newPost = await createNewPost(postData)
         await sendEmail(

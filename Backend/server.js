@@ -7,7 +7,7 @@ import cors from 'cors'
 import { logger } from './middlewares/logger.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 //import { isAuthorized } from './middlewares/isAuthorized.js'
-import path from 'node:path' 
+//import path from 'node:path' 
 import authRouter from './modules/authorization/authRoutes.js'
 import { checkPassword } from './middlewares/checkPassword.js'
 
